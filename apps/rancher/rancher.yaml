@@ -1,0 +1,24 @@
+#kubectl apply -f rancher.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rancher
+  namespace: cattle-system
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rancher
+  template:
+    metadata:
+      labels:
+        app: rancher
+    spec:
+      containers:
+        - name: rancher
+          image: rancher/rancher:v2.11.0-alpha2
+          args:
+            - '--http-listen-port=80'
+            - '--https-listen-port=443'
+          ports:
+            - containerPort: 80
