@@ -1,0 +1,12 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: fleet-homelab
+  namespace: fleet-local
+  annotations:
+    field.cattle.io/description: "GitOps Deployments for my Homelab with Fleet."
+spec:
+  repo: https://github.com/sirArthurDayne/homelab
+  branch: master
+  paths:
+  - clusters/k3s-ha/apps/

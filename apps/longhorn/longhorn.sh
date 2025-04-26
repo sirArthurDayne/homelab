@@ -22,6 +22,9 @@ echo -e " \033[32;2m                                                           \
 # Set the IP addresses of master1
 master1=10.10.50.10
 
+# K3S Version
+k3sVersion="v1.26.10+k3s2"
+
 # Set the IP addresses of your Longhorn nodes
 longhorn1=10.10.50.16
 #longhorn2=10.10.50.17
@@ -70,7 +73,7 @@ for newnode in "${storage[@]}"; do
     --ip $newnode \
     --user $user \
     --sudo \
-    --k3s-channel stable \
+    --k3s-version $k3sVersion \
     --server-ip $master1 \
     --k3s-extra-args "--node-label \"longhorn=true\"" \
     --ssh-key $HOME/.ssh/$certName
@@ -78,7 +81,7 @@ for newnode in "${storage[@]}"; do
 done
 
 # Step 2: Install Longhorn (using modified Official to pin to Longhorn Nodes)
-kubectl apply -f longhorn_v181.yaml
+kubectl apply -f https://raw.githubusercontent.com/JamesTurland/JimsGarage/main/Kubernetes/Longhorn/longhorn.yaml
 kubectl get pods \
 --namespace longhorn-system \
 --watch

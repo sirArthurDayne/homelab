@@ -1,0 +1,10 @@
+namespace: nginx
+resources:
+  - namespace.yaml
+  - deployment.yaml
+  - service.yaml
+commonLabels:
+  app: nginx
+  enviroment: prod
+commonAnnotations:
+  deployed-by: fleet
