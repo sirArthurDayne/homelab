@@ -1,3 +1,4 @@
+#master
 defaultNamespace: nginx
 targets:
 - name: k3s-ha
