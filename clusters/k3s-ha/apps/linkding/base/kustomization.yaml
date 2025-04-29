@@ -1,0 +1,10 @@
+namespace: linkding
+resources:
+  - pvc.yaml
+  - deployment.yaml
+  - service.yaml
+commonLabels:
+  app: linkding
+  enviroment: prod
+commonAnnotations:
+  deployed-by: fleet

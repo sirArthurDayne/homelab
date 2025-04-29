@@ -1,0 +1,7 @@
+defaultNamespace: linkding
+targets:
+- name: k3s-ha
+  clusterName: local
+
+kustomize:
+  dir: ./base
