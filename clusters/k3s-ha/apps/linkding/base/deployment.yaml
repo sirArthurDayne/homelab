@@ -25,4 +25,4 @@ spec:
       volumes:
         - name: linkding-data
           persistentVolumeClaim:
-            claimName: linkding-data-pvc
+            claimName: linking-data-pvc
