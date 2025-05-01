@@ -20,7 +20,7 @@ echo -e " \033[32;2m                                                           \
 # YOU SHOULD ONLY NEED TO EDIT THIS SECTION #
 #############################################
 # Set the IP addresses of master1
-master1=10.10.50.10
+master1=10.10.50.10 #use kubeVIP address instead of master01 real ip
 
 # K3S Version
 k3sVersion="v1.26.10+k3s2"
@@ -74,7 +74,7 @@ for newnode in "${storage[@]}"; do
     --user $user \
     --sudo \
     --k3s-version $k3sVersion \
-    --server-ip $master1 \
+    --server-ip $vip \
     --k3s-extra-args "--node-label \"longhorn=true\"" \
     --ssh-key $HOME/.ssh/$certName
   echo -e " \033[32;5mAgent node joined successfully!\033[0m"

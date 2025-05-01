@@ -176,7 +176,7 @@ for newnode in "${masters[@]}"; do
     --sudo \
     --k3s-version $k3sVersion \
     --server \
-    --server-ip $master1 \
+    --server-ip $vip \
     --ssh-key $HOME/.ssh/$certName \
     --k3s-extra-args "--disable traefik --disable servicelb --flannel-iface=$interface --node-ip=$newnode --node-taint node-role.kubernetes.io/master=true:NoSchedule" \
     --server-user $user
@@ -190,7 +190,7 @@ for newagent in "${workers[@]}"; do
     --user $user \
     --sudo \
     --k3s-version $k3sVersion \
-    --server-ip $master1 \
+    --server-ip $vip \
     --ssh-key $HOME/.ssh/$certName \
     --k3s-extra-args "--node-label \"longhorn=true\" --node-label \"worker=true\""
   echo -e " \033[32;5mAgent node joined successfully!\033[0m"
