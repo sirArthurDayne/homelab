@@ -80,14 +80,16 @@ for newnode in "${storage[@]}"; do
   echo -e " \033[32;5mAgent node joined successfully!\033[0m"
 done
 
-# Step 2: Install Longhorn (using modified Official to pin to Longhorn Nodes)
-kubectl apply -f https://raw.githubusercontent.com/JamesTurland/JimsGarage/main/Kubernetes/Longhorn/longhorn.yaml
+# Step 2: Install Longhorn With Helm and also target nodes with 'longhorn' label.
+helm repo add longhorn https://charts.longhorn.io
+helm repo update
+helm install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace --version 1.8.1 --values values.yaml
+
 kubectl get pods \
 --namespace longhorn-system \
 --watch
 
 # Step 3: Print out confirmation
-
 kubectl get nodes
 kubectl get svc -n longhorn-system
 

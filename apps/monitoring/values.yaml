@@ -1,0 +1,23 @@
+#nameOverride: "k3s-monitor"
+#namespaceOverride: "monitoring"
+commonLabels: 
+  environment: prod
+
+nodeSelector:
+  worker: "true"
+
+grafana:
+  adminUser: admin
+  adminPassword: prom-operator
+  nodeSelector:
+    worker: "true"
+
+prometheus:
+  prometheusSpec:
+    nodeSelector:
+      worker: "true"
+
+alertmanager:
+  alertmanagerSpec:
+    nodeSelector:
+      worker: "true"

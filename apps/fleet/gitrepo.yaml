@@ -1,3 +1,6 @@
+#TODO: 
+# 1. make this automate with GitOps and more generic.
+# 2. Test deployment with Fleet.
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
 metadata:
@@ -9,4 +12,4 @@ spec:
   repo: https://github.com/sirArthurDayne/homelab
   branch: master
   paths:
-  - clusters/k3s-ha/apps/
+ TO - clusters/k3s-ha/apps/
